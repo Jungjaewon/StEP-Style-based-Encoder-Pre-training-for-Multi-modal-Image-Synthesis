@@ -1,0 +1,72 @@
+
+MODEL_CONFIG:
+  IMG_SIZE: 256
+
+TRAINING_CONFIG:
+
+  WANDB : 'True'
+  NAME : 'tops'
+  NUM_STYLE_FEAT : 32
+  E_MODEL : 'res18'
+  EPOCH_1: 5
+  EPOCH_2: 30
+  EPOCH_3: 10
+  BATCH_SIZE: 16
+
+  # lr and lambda
+  E_LR : 10e-4
+  G_LR : 10e-4
+  D_LR : 20e-5
+
+  PERCEP : 'True'
+
+  LAMBDA_E_TRI  : 1
+  LAMBDA_E_REG  : 0.0005
+
+  LAMBDA_G_FAKE  : 1
+  LAMBDA_G_RECON : 1
+  LAMBDA_G_PERCEP : 100
+
+  LAMBDA_D_FAKE  : 1
+  LAMBDA_D_REAL  : 1
+
+  GAN_LOSS : 'lsgan' # lsgan
+
+  # Optimizer
+  OPTIM : ADAM
+  BETA1: 0.5 # 0.0
+  BETA2: 0.999
+
+  # Settings
+  NUM_WORKER : 4
+  MODE : 'train' # 'test', 'metric'?
+  SEED : 959
+  USE_TENSORBOARD : 'True' # 'True' or 'False'
+
+  #spectral norm
+  G_SPEC : 'False'
+  D_SPEC : 'False'
+
+  TRAIN_DIR : 'step_tops_percep_gt'
+  LOG_DIR : 'logs'
+  SAMPLE_DIR : 'samples'
+  RESULT_DIR : 'results'
+  MODEL_DIR : 'models'
+
+  # GPU
+  GPU: 0
+
+  # Step Size
+  SAMPLE_STEP : 1 # epoch based
+  TEST_STEP : 3 # epoch based
+  LOG_STEP : 100 # iteration based
+  SAVE_STEP : 3 # epoch based
+  SAVE_START : 1 # epoch based
+  LR_DECAY_STEP : 1
+  LR_DECAY_POLICY : 'LambdaLR' # LambdaLR, None, # ExponentialLR
+  # lr_schedule : https://sanghyu.tistory.com/113
+
+TEST_CONFIG:
+  TEST_EPOCH : 100
+
+
